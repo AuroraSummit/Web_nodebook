@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS案例分析--生成随机数</title>
+    <script>
+      // Math.random()--得到一个随机小数
+      // Math.floor()--去掉小数部分，得到一个整数
+      //   randNumber = Math.floor(Math.random() * (max - min + 1) + min); //生成0-1之间的浮点数
+      //   randomNumber = Math.floor(Math.random * 6) + 1; //生成1-6之间的随机数
+      const randomNunber = Math.floor(0.374324823 * 6) + 1;
+      const randomNumber = Math.floor(2.245948938) + 1;
+      document.write(randomNunber);
+      window.crypto.getRandomValues(); //不生成0-1之间的浮点数，使用随机的整数填充一个数组
+      // getRandomValues()的输出转换成一个0-1之间的小数m
+      const randomBuffer = new Uint32Array(1);
+      window.crypto.getRandomValues(randomBuffer);
+      const randomFraction = randomBuffer[0] / (0xffffffff + 1);
+      const randomNumber1 = Math.floor(randomBuffer * 6) + 1;
+      console.log(randomNumber1);
+      document.write(randomNumber1);
+      const crypto = require("crypto").webcrypto;
+      const randomBuffer1 = new Uint32Array(1);
+      window.crypto.getRandomValues(randomBuffer1);
+      const randomFraction1 = randomBuffer[0] / (0xffffffff + 1);
+
+      // 四十五人到具体精度
+      const fractionalNumber = 19.48938;
+      const roundedNumber = Math.round(fractionalNumber);
+      document.write(roundedNumber);
+    </script>
+  </head>
+  <body></body>
+</html>
